@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vulnerability Submission Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center p-8">
+
+    <h1 class="text-4xl font-bold mb-8">Vulnerability Submission Form</h1>
+
+    <form id="vulnForm" class="bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-4xl space-y-6">
+
+        <div>
+            <label class="block text-lg font-semibold">Contact Name:</label>
+            <input type="text" id="contactName" required class="w-full mt-2 p-2 rounded-lg bg-gray-700 border border-gray-600">
+        </div>
+
+        <div>
+            <label class="block text-lg font-semibold">Contact Email:</label>
+            <input type="email" id="contactEmail" required class="w-full mt-2 p-2 rounded-lg bg-gray-700 border border-gray-600">
+        </div>
+
+        <div>
+            <label class="block text-lg font-semibold">Organization Name:</label>
+            <input type="text" id="orgName" class="w-full mt-2 p-2 rounded-lg bg-gray-700 border border-gray-600">
+        </div>
+
+        <div>
+            <label class="block text-lg font-semibold">Product Name and Version:</label>
+            <textarea id="productInfo" rows="3" class="w-full mt-2 p-2 rounded-lg bg-gray-700 border border-gray-600"></textarea>
+        </div>
+
+        <div>
+            <label class="block text-lg font-semibold">Vulnerability Description:</label>
+            <textarea id="vulnDesc" rows="4" required class="w-full mt-2 p-2 rounded-lg bg-gray-700 border border-gray-600"></textarea>
+        </div>
+
+        <div>
+            <label class="block text-lg font-semibold">Impact:</label>
+            <textarea id="impact" rows="3" class="w-full mt-2 p-2 rounded-lg bg-gray-700 border border-gray-600"></textarea>
+        </div>
+
+        <div>
+            <label class="block text-lg font-semibold">Steps to Reproduce:</label>
+            <textarea id="steps" rows="3" class="w-full mt-2 p-2 rounded-lg bg-gray-700 border border-gray-600"></textarea>
+        </div>
+
+        <div>
+            <label class="block text-lg font-semibold">Additional References:</label>
+            <input type="text" id="references" class="w-full mt-2 p-2 rounded-lg bg-gray-700 border border-gray-600">
+        </div>
+
+        <button type="submit" class="w-full py-3 mt-6 bg-blue-600 hover:bg-blue-700 rounded-xl text-lg font-bold transition">Submit Report</button>
+
+    </form>
+
+    <!-- Modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center">
+        <div class="bg-gray-800 p-10 rounded-2xl shadow-2xl text-center">
+            <h2 class="text-3xl font-bold mb-6">🎉 Congratulations!</h2>
+            <p class="mb-4">You have submitted the vulnerability report!</p>
+            <p class="mb-2">Link to the IPFS File: <span class="text-blue-400 underline">https://ipfs.io/ipfs/FAKE_HASH_VALUE</span></p>
+            <p class="mb-2">Hash Value: <span class="font-mono text-green-400">FAKE_HASH_VALUE</span></p>
+            <button onclick="closeModal()" class="mt-6 bg-green-600 hover:bg-green-700 px-6 py-2 rounded-xl">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('vulnForm');
+        const modal = document.getElementById('successModal');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            setTimeout(() => {
+                modal.classList.remove('hidden');
+            }, 5000); // 5 seconds delay
+        });
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            form.reset();
+        }
+    </script>
+
+</body>
+</html>
